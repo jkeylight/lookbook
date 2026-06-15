@@ -27,12 +27,6 @@ function initCursor() {
   }
   moveRing();
 
-  // Store cleanup function for potential teardown
-  window._cursorCleanup = function() {
-    isRunning = false;
-    if (rafId) cancelAnimationFrame(rafId);
-  };
-
   var interactives = document.querySelectorAll(
     'a, .menu-trigger, .menu-close, .menu-item, .cover-enter'
   );

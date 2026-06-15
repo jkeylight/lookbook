@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   /* ====================================
      LOADER → THEN EVERYTHING
-     ==================================== */    initLoader(function() {
+     ==================================== */
+  initLoader(function() {
     document.getElementById('header').style.opacity = '1';
     initSnapScroll();
     initColorShift();

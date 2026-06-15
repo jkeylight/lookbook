@@ -7,3 +7,5 @@ dist/
 Thumbs.db
 VIBE_ROLLBACK.md
 *.log
+
+.vercel
