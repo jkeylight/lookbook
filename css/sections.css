@@ -1,0 +1,361 @@
+/* ==========================================================
+   THE LOOKBOOK — sections.css
+   ========================================================== */
+
+/* =============================================
+   LOADER — CINEMATIC SEQUENCE
+   ============================================= */
+.loader {
+  position: fixed; inset: 0;
+  background: var(--paper);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-line {
+  position: absolute;
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: clamp(.7rem, 1.4vw, 1rem);
+  letter-spacing: .55em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0;
+  will-change: opacity;
+  white-space: nowrap;
+}
+
+.loader-by {
+  font-size: clamp(.6rem, 1.1vw, .8rem) !important;
+  letter-spacing: .3em !important;
+  text-transform: lowercase !important;
+}
+
+.loader-signature {
+  position: absolute;
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: var(--ink);
+  opacity: 0;
+  will-change: opacity, clip-path;
+  white-space: nowrap;
+  clip-path: inset(0 100% 0 0);
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.hero-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* VOLUME I — breathe animation */
+.hero-volume {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(5rem, 14vw, 14rem);
+  line-height: .85;
+  letter-spacing: -.03em;
+  opacity: 0;
+  animation: heroVolumeIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+@keyframes heroVolumeIn {
+  0%   { opacity: 0; letter-spacing: .05em; }
+  100% { opacity: 1; letter-spacing: -.03em; }
+}
+.hero-volume.breathe {
+  animation: heroBreathe 6s ease-in-out infinite alternate;
+}
+@keyframes heroBreathe {
+  from { letter-spacing: -.03em; }
+  to   { letter-spacing: .02em; }
+}
+
+/* COLLECTIONS — fade only */
+.hero-collections {
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(.55rem, 1vw, .75rem);
+  letter-spacing: .5em;
+  opacity: 0;
+  margin-top: 16px;
+  animation: heroFade 0.8s ease 1.2s forwards;
+}
+@keyframes heroFade {
+  to { opacity: 0.35; }
+}
+
+/* DIVIDER — draw from center */
+.hero-divider {
+  width: 0;
+  height: 1px;
+  background: var(--ink);
+  opacity: 0;
+  margin: 40px 0;
+  animation: heroDividerDraw 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.6s forwards;
+}
+@keyframes heroDividerDraw {
+  to { width: 40px; opacity: 0.15; }
+}
+
+/* NAMES — base state (hidden) */
+.hero-names {
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(.55rem, 1vw, .7rem);
+  letter-spacing: .35em;
+  line-height: 2.2;
+  opacity: 0;
+  animation: heroFade 0.01s ease 2s forwards;
+}
+.hero-names span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: heroNameIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes heroNameIn {
+  to { opacity: 0.4; transform: translateY(0); }
+}
+
+/* Name stagger — 100ms per name, dots are faster */
+.hero-names span:nth-child(1)  { animation-delay: 2.0s; }  /* YUKI */
+.hero-names span:nth-child(2)  { animation-delay: 2.05s; } /* dot */
+.hero-names span:nth-child(3)  { animation-delay: 2.1s; }  /* VALENTINA */
+.hero-names span:nth-child(4)  { animation-delay: 2.15s; } /* dot */
+.hero-names span:nth-child(5)  { animation-delay: 2.2s; }  /* ALEXEI */
+.hero-names span:nth-child(6)  { animation-delay: 2.25s; } /* dot */
+.hero-names span:nth-child(7)  { animation-delay: 2.3s; }  /* ADAEZE */
+.hero-names span:nth-child(8)  { animation-delay: 2.35s; } /* dot */
+.hero-names span:nth-child(9)  { animation-delay: 2.4s; }  /* JIYEON */
+.hero-names span:nth-child(10) { animation-delay: 2.6s; }  /* ELENA */
+.hero-names span:nth-child(11) { animation-delay: 2.65s; } /* dot */
+.hero-names span:nth-child(12) { animation-delay: 2.7s; }  /* SIGRID */
+.hero-names span:nth-child(13) { animation-delay: 2.75s; } /* dot */
+.hero-names span:nth-child(14) { animation-delay: 2.8s; }  /* RUBY */
+.hero-names span:nth-child(15) { animation-delay: 2.85s; } /* dot */
+.hero-names span:nth-child(16) { animation-delay: 2.9s; }  /* PRIYA */
+.hero-names span:nth-child(17) { animation-delay: 2.95s; } /* dot */
+.hero-names span:nth-child(18) { animation-delay: 3.0s; }  /* CHARLOTTE */
+
+/* Scroll hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: heroFade 0.5s ease 3.4s forwards;
+}
+.scroll-line {
+  width: 1px;
+  height: 36px;
+  background: var(--ink);
+  opacity: .15;
+  animation: scrollPulse 2s ease-in-out 3.4s infinite;
+  transform-origin: top;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: .06; transform: scaleY(0.5); }
+  50%      { opacity: .2; transform: scaleY(1); }
+}
+
+/* =============================================
+   COVERS WRAPPER
+   ============================================= */
+.covers-wrapper {
+  position: relative;
+}
+
+/* =============================================
+   COVER PANEL
+   ============================================= */
+.cover-panel {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 6vw;
+  padding: 0 8vw;
+  position: relative;
+  overflow: hidden;
+}
+
+/* COVER TEXT */
+.cover-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+}
+.cover-num {
+  font-family: 'DM Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .35em;
+  opacity: .2;
+  margin-bottom: 20px;
+}
+.cover-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  line-height: .9;
+  letter-spacing: -.02em;
+  margin-bottom: 12px;
+}
+.cover-world {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2.5vw, 2.5rem);
+  opacity: .7;
+  margin-bottom: 24px;
+}
+.cover-location {
+  font-family: 'DM Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .35em;
+  opacity: .3;
+  margin-bottom: 40px;
+}
+.cover-enter {
+  font-family: 'DM Mono', monospace;
+  font-size: .75rem;
+  letter-spacing: .3em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color .4s;
+}
+.cover-enter::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--accent);
+  transition: width .5s var(--ease);
+}
+.cover-enter:hover {
+  color: var(--accent);
+}
+.cover-enter:hover::after {
+  width: 100%;
+}
+
+/* COVER IMAGE */
+.cover-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+  opacity: 0;
+}
+.cover-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border: 1px solid rgba(128,128,128,.1);
+  transition: transform .6s var(--ease-out);
+}
+.cover-image img:hover {
+  transform: scale(1.02);
+}
+
+/* =============================================
+   COLOPHON
+   ============================================= */
+.colophon {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15vh 6vw;
+}
+.colophon-inner {
+  text-align: center;
+  max-width: 600px;
+}
+.colophon-title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  opacity: 0;
+}
+.colophon-gap {
+  height: 50px;
+}
+.colophon-line {
+  font-family: 'DM Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .45em;
+  opacity: .25;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.colophon-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 400;
+  opacity: .75;
+  margin-bottom: 4px;
+}
+
+/* =============================================
+   MOBILE — SECTION OVERRIDES
+   ============================================= */
+@media (max-width: 1000px) {
+  .hero-volume { font-size: clamp(3.5rem, 18vw, 7rem); }
+
+  .cover-panel {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 30px;
+    padding: 80px 6vw 40px;
+    height: auto;
+    min-height: 100vh;
+  }
+  .cover-text {
+    padding-top: 20px;
+  }
+  .cover-name { font-size: clamp(2rem, 10vw, 3.5rem); }
+  .cover-world { font-size: clamp(1rem, 4vw, 1.5rem); }
+  .cover-image {
+    height: 50vh;
+    max-height: 500px;
+  }
+  .cover-image img {
+    max-width: 80vw;
+  }
+
+  .colophon-name { font-size: clamp(.9rem, 3vw, 1.2rem); }
+}
